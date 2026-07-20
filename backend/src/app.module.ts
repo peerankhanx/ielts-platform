@@ -43,14 +43,16 @@ import { AppService } from './app.service';
       useFactory: (config: ConfigService) => config.get('database')!,
     }),
     BullModule.forRootAsync({
-      inject: [ConfigService],
-      useFactory: (config: ConfigService) => ({
-        connection: {
-          host: config.get<string>('REDIS_HOST'),
-          port: config.get<number>('REDIS_PORT'),
-        },
-      }),
-    }),
+  inject: [ConfigService],
+  useFactory: (config: ConfigService) => ({
+    connection: {
+      host: config.get<string>('REDIS_HOST'),
+      port: config.get<number>('REDIS_PORT'),
+      password: config.get<string>('REDIS_PASSWORD'),
+      tls: {},
+    },
+  }),
+}),
     ThrottlerModule.forRoot({
       throttlers: [{ ttl: 60_000, limit: 100 }],
     }),
