@@ -1,0 +1,1 @@
+export const SPEAKING_EVALUATOR = Symbol('SPEAKING_EVALUATOR');

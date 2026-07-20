@@ -1,0 +1,1 @@
+export const WRITING_EVALUATOR = Symbol('WRITING_EVALUATOR');
