@@ -25,8 +25,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   // on every /admin/* API route — this client check only avoids flashing
   // admin UI at someone who isn't authorized before the redirect kicks in.
   if (!user || (user.role !== "admin" && user.role !== "super_admin")) {
-    return null;
-  }
+    return <div className="p-8 text-center">Access Denied. Role: {user?.role || "no user"}</div>;
+}
 
   return (
     <div className="flex h-screen overflow-hidden">
