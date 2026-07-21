@@ -24,6 +24,11 @@ export const authService = {
     return data.data;
   },
 
+  async refresh() {
+    const { data } = await apiClient.post<ApiResponse<LoginResult>>("/auth/refresh");
+    return data.data;
+  },
+
   async forgotPassword(email: string) {
     const { data } = await apiClient.post<ApiResponse<null>>("/auth/forgot-password", { email });
     return data;
